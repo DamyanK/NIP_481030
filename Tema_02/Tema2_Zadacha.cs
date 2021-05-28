@@ -96,19 +96,30 @@ namespace Tema2_Zadacha
                 }
                 if (curent[0] == "shift")
                 {
-                    int[] temp = new int[input.Count];
                     int shiftValue = Convert.ToInt32(curent[1]);
 
-                    for (int i = 0; i < input.Count - shiftValue; i++)
+                    var first = new List<int>();
+                    var second = new List<int>();
+
+                    for (int i = 0; i < shiftValue; i++)
                     {
-                        temp[i] = input[i + shiftValue];
+                        first.Add(input[i]);
                     }
-                    for (int i = input.Count - shiftValue; i < input.Count; i++)
+                    for (int i = shiftValue; i < input.Count; i++)
                     {
-                        temp[i] = input[input.Count - 1 - i];
+                        second.Add(input[i]);
                     }
 
-                    input = temp.ToList();
+                    input.Clear();
+
+                    for (int i = 0; i < second.Count; i++)
+                    {
+                        input.Add(second[i]);
+                    }
+                    for (int i = 0; i < first.Count; i++)
+                    {
+                        input.Add(first[i]);
+                    }
                 }
                 if (curent[0] == "sumPairs")
                 {
